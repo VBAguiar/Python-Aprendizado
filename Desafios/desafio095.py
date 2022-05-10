@@ -1,4 +1,8 @@
+from tabulate import tabulate
+
 listaDeJogadores = []
+tabulateListe = []
+cod = 0
 
 while True:
 	gols = []
@@ -8,14 +12,40 @@ while True:
 	for c in range(1, qpartidas+1):
 		gol = int(input(     'Quantos gols na partida {} '.format(c)))
 		gols.append(gol)
-	jogador = {'nome': nome, 'gols': gols, 'total': sum(gols)}; listaDeJogadores.append(jogador)
+	
+	jogador = {'cod': cod, 'nome': nome, 'gols': gols, 'total': sum(gols)}; listaDeJogadores.append(jogador.copy())
+	
+	continuar = ' '
+	cod += 1
+	while True:
+		continuar = str(input('Quer continuar? [S/N] ')).strip().upper()[0]
+	
+		if continuar in 'SN':
+			break
+		
+		print('Digite novamente')
+	
+	if continuar == "N":
+		break 
 
-print('cod ', end=' ')
-for i in jogadores.keys():
-	print(f'{i:>4}')
+print('-='*50)	
+print(tabulate(listaDeJogadores, headers='keys'))
+print('-'*32)
 
-print('-'*30)
+jogador = 0
+while jogador != 999:
+	jogador = int(input('Mostra dados de qual jogador? (999 para parar) '))
+	
+	if jogador == 999:
+		break
+	
+	if jogador >= len(listaDeJogadores):
+			print(f'ERRO!! Não existe jogador com código {jogador}!')
+			jogador = int(input('Mostra dados de qual jogador? (999 para parar) '))
+	
+	for i in range(0, len(listaDeJogadores)):
+		if i == jogador:
+			for c, i in enumerate(listaDeJogadores[i]['gols']):
+				print(f'No jogo {c} fez {i}.')
 
-
-
-
+print('!!VOLTE SEMPRE!!')
