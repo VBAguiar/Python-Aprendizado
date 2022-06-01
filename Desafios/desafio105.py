@@ -1,4 +1,9 @@
 def notas(*notas, sit=False):
+	"""
+	notas(*n, sit=False)
+		-> Função para analisar nota e situações de vários alunos.
+	
+	"""
 	total = len(notas); maior = max(notas); menor = min(notas); media = sum(notas) / 2
 	resp = {'total': total, 'maior': maior, 'menor': menor, 'media': media}
 	situcao = None
