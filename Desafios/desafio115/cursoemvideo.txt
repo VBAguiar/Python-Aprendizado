@@ -1,0 +1,9 @@
+Vinicius;16
+Lucas;16
+Velma;12
+Maria;12
+1;0
+0;0
+Vinicius;12
+Rebeca;15
+White;12
